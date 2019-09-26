@@ -5,21 +5,28 @@ const Shoes = require('./shoes');
 const Precipitation = require('./precipitation');
 const Bottom = require('./bottom');
 const Accessory = require('./accessory');
+const Coat = require('./coat');
+
+Weather.hasMany(Coat);
+Coat.hasMany(Weather);
 
 Weather.hasMany(Accessory);
-Accessory.belongsToMany(Weather);
+Accessory.hasMany(Weather);
 
 Weather.hasMany(Bottom);
-Bottom.belongsToMany(Weather);
+Bottom.hasMany(Weather);
 
 Weather.hasMany(Precipitation);
-Precipitation.belongsToMany(Weather);
+Precipitation.hasMany(Weather);
 
 Weather.hasMany(Shoes);
-Shoes.belongsToMany(Weather);
+Shoes.hasMany(Weather);
+
+Precipitation.hasOne(Shoes);
+Shoes.hasMany(Precipitation);
 
 Weather.hasMany(Top);
-Top.belongsToMany(Weather);
+Top.hasMany(Weather);
 
 module.exports = {
   Weather,
@@ -28,5 +35,6 @@ module.exports = {
   Shoes,
   Precipitation,
   Bottom,
-  Accessory
+  Accessory,
+  Coat
 };
