@@ -8,15 +8,14 @@ const chalk = require('chalk');
 
 const seed = async () => {
   try {
-    let weather = []
+    let tempArr = [];
     for (let i = 10; i <= 120; i++) {
-      weather.push(i)
+      tempArr.push(i);
     }
-    console.log(weather, 'weather')
     await db.sync({ force: true });
     await Promise.all(
-      weather.map((temp) => {
-        return Weather.create(temp);
+      tempArr.map((temp) => {
+        return Weather.create({temperature: temp});
       })
     );
     console.log(chalk.green('Seeding success!'));
