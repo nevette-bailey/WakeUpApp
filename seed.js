@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('./server/db');
-const { Weather, Shoes } = require('./server/db/models');
+const { Weather, Shoe } = require('./server/db/models');
 const chalk = require('chalk');
 
 //creates possible weather conditions
@@ -22,14 +22,33 @@ const tempArr = [
   [100, 120]
 ];
 
+//creates types of shoes
+const shoesArr = [
+  'flip flops',
+  'sandals',
+  'sneakers',
+  'dress shoes',
+  'boots',
+  'rain boots',
+  'snow boots',
+  'insulated boots'
+];
+
+
 const seed = async () => {
   try {
     await db.sync({ force: true });
     await Promise.all(
-      tempArr.map((temp) => {
-        return Weather.create({ temperature: temp });
+      tempArr.map((temp, index) => {
+        return Weather.create({ id: index+1 , temperature: temp });
       })
     );
+    await Promise.all(
+      shoesArr.map((shoe) => {
+        return Shoe.create({ kind: shoe });
+      })
+    );
+
     console.log(chalk.green('Seeding success!'));
     db.close();
   } catch (error) {
