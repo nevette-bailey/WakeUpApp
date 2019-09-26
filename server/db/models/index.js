@@ -8,25 +8,25 @@ const Accessory = require('./accessory');
 const Coat = require('./coat');
 
 Weather.hasMany(Coat);
-Coat.hasMany(Weather);
+// Coat.hasMany(Weather);
 
 Weather.hasMany(Accessory);
-Accessory.hasMany(Weather);
+// Accessory.hasMany(Weather);
 
 Weather.hasMany(Bottom);
-Bottom.hasMany(Weather);
+// Bottom.hasMany(Weather);
 
 Weather.hasMany(Precipitation);
-Precipitation.hasMany(Weather);
+// Precipitation.hasMany(Weather);
 
 Weather.hasMany(Shoes);
-Shoes.hasMany(Weather);
+// Shoes.hasMany(Weather);
 
 Precipitation.hasOne(Shoes);
-Shoes.hasMany(Precipitation);
+// Shoes.hasMany(Precipitation);
 
 Weather.hasMany(Top);
-Top.hasMany(Weather);
+// Top.hasMany(Weather);
 
 module.exports = {
   Weather,
