@@ -26,24 +26,33 @@ const setLocationError = (error) => ({
   error
 });
 
-
 //thunk creators
 // //not async because api is through phone?
-export const setTempThunk = (temp) => {
+export const getLocationThunk = () => {
   return (dispatch) => {
     try {
-      dispatch(setTemperature(temp));
+      dispatch(getLocation(location));
     } catch (error) {
-      dispatch(setTemperatureErrorAction(error));
+      dispatch(getLocationError(error));
+    }
+  };
+};
+
+export const setLocationThunk = (location) => {
+  return (dispatch) => {
+    try {
+      dispatch(setLocation(location));
+    } catch (error) {
+      dispatch(setLocationError(error));
     }
   };
 };
 
 //subreducer for temperature
-export default function temperature(state = 0, action) {
+export default function location(state = {}, action) {
   switch (action.type) {
-    case SET_TEMP:
-      return action.temp;
+    case SET_LOCATION:
+      return action.location;
     default:
       return state;
   }
