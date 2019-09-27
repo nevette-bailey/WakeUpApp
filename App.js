@@ -4,12 +4,15 @@ import { Provider } from 'react-redux';
 import store from './client/store.js';
 import AppLocation from './client/components/location.js';
 
+console.disableYellowBox = true;
+
 export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <AppLocation />
+        <Text> </Text>
         <Text>Wake Up!</Text>
+        <AppLocation />
       </View>
     </Provider>
   );

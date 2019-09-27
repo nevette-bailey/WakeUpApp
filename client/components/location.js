@@ -5,6 +5,8 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { connect } from 'react-redux';
 import { setLocationThunk } from '../reducers/location';
+import { getLocationIdThunk } from '../reducers/geoposition';
+import { getConditionsThunk } from '../reducers/currentConditions';
 
 //was exported directly before, but I exported connect below...
 class AppLocation extends Component {
@@ -42,7 +44,10 @@ class AppLocation extends Component {
       text = this.state.errorMessage;
     } else if (this.state.location) {
       text = JSON.stringify(this.state.location);
-      setLocationThunk(this.state.location)
+      setLocationThunk(this.state.location);
+      getLocationIdThunk(this.state.location);
+      //get current conditions with geoposition and set on redux state
+      getConditionsThunk(this.state.geoposition);
     }
 
     return (
@@ -68,13 +73,22 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    geoposition: state.geoposition
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    setLocationThunk: (location) => dispatch(setLocationThunk(location))
+    setLocationThunk: (location) => dispatch(setLocationThunk(location)),
+    getLocationIdThunk: (location) => dispatch(getLocationIdThunk(location)),
+    getConditionsThunk: (geoposition) =>
+      dispatch(getConditionsThunk(geoposition))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AppLocation);

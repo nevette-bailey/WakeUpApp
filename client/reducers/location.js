@@ -27,17 +27,6 @@ const setLocationError = (error) => ({
 });
 
 //thunk creators
-// //not async because api is through phone?
-export const getLocationThunk = () => {
-  return (dispatch) => {
-    try {
-      dispatch(getLocation(location));
-    } catch (error) {
-      dispatch(getLocationError(error));
-    }
-  };
-};
-
 export const setLocationThunk = (location) => {
   return (dispatch) => {
     try {
