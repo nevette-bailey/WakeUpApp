@@ -3,6 +3,9 @@ const { Weather, Shoe } = require('../db/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+// router.get('/')
+
+
 router.get('/:temp', async (req, res, next) => {
   try {
     const temp = Number(req.params.temp);
@@ -17,5 +20,6 @@ router.get('/:temp', async (req, res, next) => {
     next(error);
   }
 });
+
 
 module.exports = router;
