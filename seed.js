@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('./server/db');
+const db = require('./server/db/db');
 const { Weather, Shoe, Weather_Shoe } = require('./server/db/models');
 const chalk = require('chalk');
 
