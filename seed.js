@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('./server/db');
-const { Weather, Shoe } = require('./server/db/models');
+const { Weather, Shoe, Weather_Shoe } = require('./server/db/models');
 const chalk = require('chalk');
 
 //creates possible weather conditions
@@ -34,18 +34,63 @@ const shoesArr = [
   'insulated boots'
 ];
 
+//for populating the join table for weather and shoes
+const weather_shoe = [
+  { weatherId: 1, shoId: 8 },
+  { weatherId: 2, shoId: 8 },
+  { weatherId: 3, shoId: 8 },
+  { weatherId: 4, shoId: 5 },
+  { weatherId: 5, shoId: 5 },
+  { weatherId: 5, shoId: 4 },
+  { weatherId: 5, shoId: 3 },
+  { weatherId: 6, shoId: 3 },
+  { weatherId: 6, shoId: 4 },
+  { weatherId: 6, shoId: 5 },
+  { weatherId: 7, shoId: 3 },
+  { weatherId: 7, shoId: 4 },
+  { weatherId: 7, shoId: 5 },
+  { weatherId: 8, shoId: 2 },
+  { weatherId: 8, shoId: 3 },
+  { weatherId: 8, shoId: 4 },
+  { weatherId: 9, shoId: 1 },
+  { weatherId: 9, shoId: 2 },
+  { weatherId: 9, shoId: 3 },
+  { weatherId: 9, shoId: 4 },
+  { weatherId: 10, shoId: 1 },
+  { weatherId: 10, shoId: 2 },
+  { weatherId: 10, shoId: 3 },
+  { weatherId: 10, shoId: 4 },
+  { weatherId: 11, shoId: 1 },
+  { weatherId: 11, shoId: 2 },
+  { weatherId: 11, shoId: 4 },
+  { weatherId: 12, shoId: 1 },
+  { weatherId: 12, shoId: 2 },
+  { weatherId: 12, shoId: 4 },
+  { weatherId: 13, shoId: 1 },
+  { weatherId: 13, shoId: 2 },
+  { weatherId: 13, shoId: 4 },
+  { weatherId: 14, shoId: 1 },
+  { weatherId: 14, shoId: 2 },
+  { weatherId: 14, shoId: 4 }
+];
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
     await Promise.all(
       tempArr.map((temp, index) => {
-        return Weather.create({ id: index+1 , temperature: temp });
+        return Weather.create({ id: index + 1, temperature: temp });
       })
     );
     await Promise.all(
-      shoesArr.map((shoe) => {
-        return Shoe.create({ kind: shoe });
+      shoesArr.map((shoe, index) => {
+        return Shoe.create({ id: index + 1, kind: shoe });
+      })
+    );
+
+    await Promise.all(
+      weather_shoe.map((pair) => {
+        return Weather_Shoe.create(pair);
       })
     );
 
