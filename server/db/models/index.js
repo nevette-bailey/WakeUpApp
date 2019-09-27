@@ -6,7 +6,7 @@ const Precipitation = require('./precipitation');
 const Bottom = require('./bottom');
 const Accessory = require('./accessory');
 const Coat = require('./coat');
-const db = require('../../db')
+const db = require('../db')
 
 Weather.hasMany(Coat);
 // Coat.hasMany(Weather);
