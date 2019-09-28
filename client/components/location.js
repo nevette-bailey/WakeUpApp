@@ -6,6 +6,8 @@ import * as Permissions from 'expo-permissions';
 import { connect } from 'react-redux';
 import { setLocationThunk } from '../reducers/location';
 import { getConditionsThunk } from '../reducers/currentConditions';
+import { getShoesThunk } from '../reducers/shoe';
+
 
 //was exported directly before, but I exported connect below...
 class AppLocation extends Component {
@@ -37,8 +39,9 @@ class AppLocation extends Component {
     this.setState({ location });
     //set current location onto store
     this.props.setLocationThunk(this.state.location);
-    //get current conditions with location and set on redux state
-    this.props.getConditionsThunk(this.state.location);
+    //get current conditions from location and set conditions & temperature on redux state
+    await this.props.getConditionsThunk(this.state.location);
+    this.props.getShoesThunk(this.props.temperature);
   };
 
   render() {
@@ -76,15 +79,16 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     location: state.location,
-    currentConditions: state.currentConditions
+    currentConditions: state.currentConditions,
+    temperature: state.temperature
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setLocationThunk: (location) => dispatch(setLocationThunk(location)),
-    getConditionsThunk: (geoposition) =>
-      dispatch(getConditionsThunk(geoposition))
+    getConditionsThunk: (location) => dispatch(getConditionsThunk(location)),
+    getShoesThunk: (temperature) => dispatch(getShoesThunk(temperature))
   };
 };
 

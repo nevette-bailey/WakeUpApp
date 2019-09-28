@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { SET_TEMP, SET_TEMP_ERROR } from './index';
+import { SET_TEMP, SET_TEMP_ERROR, GET_CURRENT_CONDITIONS } from './index';
 
 //action creators
 const setTemperature = (temp) => ({
@@ -25,10 +25,12 @@ export const setTempThunk = (temp) => {
 };
 
 //subreducer for temperature
-export default function temperature(state = 0, action) {
+export default function temperature(state = null, action) {
   switch (action.type) {
     case SET_TEMP:
       return action.temp;
+    case GET_CURRENT_CONDITIONS:
+      return Math.round(action.currentConditions.main.temp * (9/5) - 459.67)
     default:
       return state;
   }
