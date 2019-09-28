@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 import temperature from './temperature';
+import location from './location';
+import geoposition from './geoposition';
+import currentConditions from './currentConditions';
 
 //action types
 export const SET_TEMP = 'SET_TEMP';
@@ -15,7 +18,10 @@ export const GET_CURRENT_CONDITIONS = 'GET_CURRENT_CONDITIONS';
 export const GET_CONDITIONS_ERROR = 'GET_CONDITIONS_ERROR';
 
 const rootReducer = combineReducers({
-  temperature
+  temperature,
+  location,
+  geoposition,
+  currentConditions
 });
 
 export default rootReducer;

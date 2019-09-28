@@ -13,14 +13,17 @@ const getConditionsError = (error) => ({
 });
 
 //thunk creators
-export const getConditionsThunk = (geoposition) => {
+export const getConditionsThunk = (location) => {
   return async (dispatch) => {
     try {
-      const apiKey = '6qiVJW4Q1FPuCdaU6EJgfmQkFRwgqGpt';
-      const locationKey = Number(geoposition);
+      const apiKey = '9c58c17a1a53d693ab05693a144ca1c8';
+      // const locationKey = Number(geoposition);
+      const lat = location.coords.latitude;
+      const lon = location.coords.longitude;
       const { data } = await Axios.get(
-        `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=6qiVJW4Q1FPuCdaU6EJgfmQkFRwgqGpt`
+        `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
       );
+      console.log(data, 'CONDITIONS DATA')
       dispatch(getConditions(data));
     } catch (error) {
       dispatch(getConditionsError(error));

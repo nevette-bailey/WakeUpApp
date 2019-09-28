@@ -37,7 +37,7 @@ export const setLocationThunk = (location) => {
   };
 };
 
-//subreducer for temperature
+//subreducer for location
 export default function location(state = {}, action) {
   switch (action.type) {
     case SET_LOCATION:

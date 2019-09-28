@@ -36,23 +36,24 @@ class AppLocation extends Component {
 
     let location = await Location.getCurrentPositionAsync({});
     this.setState({ location });
+    // this.props.setLocationThunk(this.state.location);
+    // this.props.getLocationIdThunk(this.state.location);
+    //get current conditions with geoposition and set on redux state
+    this.props.getConditionsThunk(this.state.location);
   };
 
   render() {
     let text = 'Waiting..';
+    const currentConditions = JSON.stringify(this.props.currentConditions);
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
     } else if (this.state.location) {
-      text = JSON.stringify(this.state.location);
-      setLocationThunk(this.state.location);
-      getLocationIdThunk(this.state.location);
-      //get current conditions with geoposition and set on redux state
-      getConditionsThunk(this.state.geoposition);
+      text = JSON.stringify(this.props.location);
     }
 
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>{text}</Text>
+        <Text style={styles.paragraph}> {currentConditions}</Text>
       </View>
     );
   }
@@ -75,7 +76,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    geoposition: state.geoposition
+    location: state.location,
+    geoposition: state.geoposition,
+    currentConditions: state.currentConditions
   };
 };
 
