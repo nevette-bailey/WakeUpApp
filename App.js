@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './client/store.js';
 import AppLocation from './client/components/location.js';
+import Conditions from './client/components/conditions.js';
 
 console.disableYellowBox = true;
 
@@ -13,6 +14,7 @@ export default function App() {
         <Text> </Text>
         <Text>Wake Up!</Text>
         <AppLocation />
+        <Conditions />
       </View>
     </Provider>
   );

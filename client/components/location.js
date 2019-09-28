@@ -5,7 +5,6 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { connect } from 'react-redux';
 import { setLocationThunk } from '../reducers/location';
-import { getLocationIdThunk } from '../reducers/geoposition';
 import { getConditionsThunk } from '../reducers/currentConditions';
 
 //was exported directly before, but I exported connect below...
@@ -36,25 +35,25 @@ class AppLocation extends Component {
 
     let location = await Location.getCurrentPositionAsync({});
     this.setState({ location });
-    // this.props.setLocationThunk(this.state.location);
-    // this.props.getLocationIdThunk(this.state.location);
-    //get current conditions with geoposition and set on redux state
+    //set current location onto store
+    this.props.setLocationThunk(this.state.location);
+    //get current conditions with location and set on redux state
     this.props.getConditionsThunk(this.state.location);
   };
 
   render() {
-    let text = 'Waiting..';
-    const currentConditions = JSON.stringify(this.props.currentConditions);
+    let text = 'Waiting...';
     if (this.state.errorMessage) {
       text = this.state.errorMessage;
     } else if (this.state.location) {
-      text = JSON.stringify(this.props.location);
+      text = JSON.stringify(this.props.currentConditions);
     }
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}> {currentConditions}</Text>
-      </View>
+      // <View style={styles.container}>
+      //   <Text style={styles.paragraph}>{text}</Text>
+      // </View>
+      null
     );
   }
 }
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     location: state.location,
-    geoposition: state.geoposition,
     currentConditions: state.currentConditions
   };
 };
@@ -85,7 +83,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setLocationThunk: (location) => dispatch(setLocationThunk(location)),
-    getLocationIdThunk: (location) => dispatch(getLocationIdThunk(location)),
     getConditionsThunk: (geoposition) =>
       dispatch(getConditionsThunk(geoposition))
   };

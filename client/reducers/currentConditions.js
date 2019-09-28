@@ -1,6 +1,8 @@
 import { GET_CURRENT_CONDITIONS, GET_CONDITIONS_ERROR } from './index';
 import Axios from 'axios';
 
+//get current weather conditions from free weather API: http://openweathermap.org
+
 //action creators
 const getConditions = (currentConditions) => ({
   type: GET_CURRENT_CONDITIONS,
@@ -17,13 +19,11 @@ export const getConditionsThunk = (location) => {
   return async (dispatch) => {
     try {
       const apiKey = '9c58c17a1a53d693ab05693a144ca1c8';
-      // const locationKey = Number(geoposition);
       const lat = location.coords.latitude;
       const lon = location.coords.longitude;
       const { data } = await Axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
       );
-      console.log(data, 'CONDITIONS DATA')
       dispatch(getConditions(data));
     } catch (error) {
       dispatch(getConditionsError(error));
