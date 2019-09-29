@@ -8,11 +8,6 @@ class Shoes extends Component {
   state = {
     temperature: this.props.temperature
   };
-  componentWillMount() {
-    // if (this.state.temperature) {
-      this.props.getShoesThunk(this.state.temperature);
-    // }
-  }
   render() {
     if (this.props.shoes) {
       return (

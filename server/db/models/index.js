@@ -6,7 +6,7 @@ const Precipitation = require('./precipitation');
 const Bottom = require('./bottom');
 const Accessory = require('./accessory');
 const Coat = require('./coat');
-const db = require('../db')
+const db = require('../database')
 
 Weather.hasMany(Coat);
 // Coat.hasMany(Weather);
@@ -40,5 +40,6 @@ module.exports = {
   Bottom,
   Accessory,
   Coat,
-  Weather_Shoe
+  Weather_Shoe,
+  db
 };

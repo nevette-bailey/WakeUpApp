@@ -1,22 +1,58 @@
 const router = require('express').Router();
-const { Weather, Shoe } = require('../db/models');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+const Weather = require('../db/models/weather')
+const Shoe = require('../db/models/shoe')
+// const Sequelize = require('sequelize');
+// const Op = Sequelize.Op;
 
 // router.get('/')
+
+router.get('/', async (req, res, next) => {
+  try {
+    const allWeather = await
+  } catch (error) {
+    next(error);
+  }
+});
+
+// router.get('/:temp', async (req, res, next) => {
+//   try {
+//     const temp = Number(req.params.temp);
+//     console.log(temp, 'WEATHER REQUEST');
+//     const weatherByTemp = await Weather.findOne({
+//       where: {
+//         temperature: {
+//           [Sequelize.Op.contains]: temp
+//         }
+//       },
+//       include: [{ model: Shoe }]
+//     });
+//     // console.log(weatherByTemp, 'WEATHER HERE');
+//     if (weatherByTemp) {
+//       res.json(weatherByTemp);
+//     } else {
+//       res.sendStatus(404);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.get('/:temp', async (req, res, next) => {
   try {
     const temp = Number(req.params.temp);
-    console.log(temp, 'WEATHER REQUEST');
-    const weatherByTemp = await Weather.findAll({
+    const weatherInfo = await Weather.findOne({
       where: {
-        [Op.contains]: temp
+        temperature: {
+          $contains: temp
+        }
       },
       include: [{ model: Shoe }]
     });
-    console.log(weatherByTemp, 'WEATHER HERE');
-    res.json(weatherByTemp);
+    if (weatherInfo) {
+      res.json(weatherInfo);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (error) {
     next(error);
   }
