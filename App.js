@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './client/store.js';
 import AppLocation from './client/components/location.js';
 import Conditions from './client/components/conditions.js';
-import Shoes from './client/components/shoes.js'
+import Shoes from './client/components/shoes.js';
 
 console.disableYellowBox = true;
 
