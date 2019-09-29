@@ -8,6 +8,7 @@ class Shoes extends Component {
   state = {
     temperature: this.props.temperature
   };
+  
   render() {
     if (this.props.shoes) {
       return (
@@ -15,6 +16,24 @@ class Shoes extends Component {
           <Text style={styles.title}>
             Shoes:
             {}
+          </Text>
+          <Text>Icons made by </Text>
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() =>
+              Linking.openURL(
+                'https://www.flaticon.com/authors/smalllikeart" title="smalllikeart'
+              )
+            }
+          >
+            smalllikeart
+          </Text>
+          <Text>from</Text>
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() => Linking.openURL('https://www.flaticon.com/m')}
+          >
+            www.flaticon.com
           </Text>
         </View>
       );
