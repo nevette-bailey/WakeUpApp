@@ -11,7 +11,8 @@ class Conditions extends Component {
     if (this.props.currentConditions.main) {
       const temp = JSON.stringify(this.props.currentConditions.main.temp);
       const icon = JSON.stringify(this.props.currentConditions.weather[0].icon);
-
+      
+      //template literals do not work, making the url string
       const uriOne = 'http://www.openweathermap.org/img/wn/';
       const uriTwo = '@2x.png';
       const url = `${uriOne.concat(icon.substring(1, 4), uriTwo)}`;
