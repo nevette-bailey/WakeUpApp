@@ -4,9 +4,9 @@ import Axios from 'axios';
 //get the shoes associated with a specific temperature, not currently accounting for precipitation
 
 //action creators
-const getShoes = (shoes) => ({
+const getShoes = (weather) => ({
   type: GET_SHOES,
-  shoes
+  weather
 });
 
 const getShoesError = (error) => ({
@@ -19,10 +19,23 @@ export const getShoesThunk = (temperature) => {
   return async (dispatch) => {
     try {
       const temp = Number(temperature);
-      const { data } = await Axios.get(`/api/weather/${temp}`);
-      console.log(data, 'DATA HERE')
+      if (temp) {
+        const { data } = await Axios.get(`/api/weather/${temp}`);
+        console.log(data, 'DATA HERE!!!!!!!!!!!!!!!!!!!');
+        dispatch(getShoes(data));
+      }
     } catch (error) {
       dispatch(getShoesError(error));
     }
   };
 };
+
+//subreducer for shoes
+export default function shoe(state = null, action) {
+  switch (action.type) {
+    case GET_SHOES:
+      return action;
+    default:
+      return state;
+  }
+}

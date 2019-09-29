@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import temperature from './temperature';
 import location from './location';
 import currentConditions from './currentConditions';
+import shoe from './shoe';
 
 //action types
 export const SET_TEMP = 'SET_TEMP';
@@ -18,7 +19,8 @@ export const GET_SHOES_ERROR = 'GET_SHOES_ERROR';
 const rootReducer = combineReducers({
   temperature,
   location,
-  currentConditions
+  currentConditions,
+  shoe
 });
 
 export default rootReducer;
