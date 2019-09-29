@@ -15,7 +15,6 @@ export default function App() {
         <Text> </Text>
         <Text>Wake Up!</Text>
         <AppLocation />
-        <Conditions />
         <Shoes />
       </View>
     </Provider>

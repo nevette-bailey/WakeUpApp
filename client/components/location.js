@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { setLocationThunk } from '../reducers/location';
 import { getConditionsThunk } from '../reducers/currentConditions';
 import { getShoesThunk } from '../reducers/shoe';
-
+import Conditons from './conditions';
 
 //was exported directly before, but I exported connect below...
 class AppLocation extends Component {
@@ -54,10 +54,11 @@ class AppLocation extends Component {
     }
 
     return (
-      // <View style={styles.container}>
-      //   <Text style={styles.paragraph}>{text}</Text>
-      // </View>
-      null
+      <View style={styles.container}>
+        {/* <Text style={styles.paragraph}>{text}</Text> */}
+        <Conditons />
+      </View>
+      // null
     );
   }
 }
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: '#fff'
   },
   paragraph: {
     margin: 24,
