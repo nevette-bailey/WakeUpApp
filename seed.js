@@ -1,15 +1,8 @@
 'use strict';
 
-<<<<<<< HEAD
 const db = require('./server/db/database');
 const { Weather, Shoe, Weather_Shoe } = require('./server/db/models');
-=======
-const { db } = require('./server/db');
-const Weather = require('./server/db/models/weather');
-const Shoe = require('./server/db/models/shoe');
-const Weather_Shoe = require('./server/db/index');
 
->>>>>>> 6af25b9fb2ef8cbb33790edb940362877b327437
 const chalk = require('chalk');
 
 //creates possible weather conditions
