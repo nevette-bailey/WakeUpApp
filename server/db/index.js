@@ -1,3 +1,4 @@
+<<<<<<< HEAD:server/db/models/index.js
 const Weather = require('./weather');
 const User = require('./user');
 const Top = require('./top');
@@ -7,6 +8,17 @@ const Bottom = require('./bottom');
 const Accessory = require('./accessory');
 const Coat = require('./coat');
 const db = require('../database')
+=======
+const Weather = require('./models/weather');
+const User = require('./models/user');
+const Top = require('./models/top');
+const Shoe = require('./models/shoe');
+const Precipitation = require('./models/precipitation');
+const Bottom = require('./models/bottom');
+const Accessory = require('./models/accessory');
+const Coat = require('./models/coat');
+const db = require('./database')
+>>>>>>> 6af25b9fb2ef8cbb33790edb940362877b327437:server/db/index.js
 
 Weather.hasMany(Coat);
 // Coat.hasMany(Weather);
