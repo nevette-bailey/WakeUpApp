@@ -11,7 +11,7 @@ class Conditions extends Component {
     if (this.props.currentConditions.main) {
       const temp = JSON.stringify(this.props.currentConditions.main.temp);
       const icon = JSON.stringify(this.props.currentConditions.weather[0].icon);
-      
+
       //template literals do not work, making the url string
       const uriOne = 'http://www.openweathermap.org/img/wn/';
       const uriTwo = '@2x.png';
@@ -19,7 +19,7 @@ class Conditions extends Component {
 
       return (
         <View style={styles.container}>
-          <Image style={{ width: 100, height: 100 }} source={{ uri: url }} />
+          <Image style={{ width: 50, height: 50 }} source={{ uri: url }} />
           <Text style={styles.title}>
             Current Temp: {Math.round(temp * (9 / 5) - 459.67)} {'\u2109'}
           </Text>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   title: {
     margin: 24,
-    fontSize: 24,
+    fontSize: 18,
     textAlign: 'left'
   },
   paragraph: {
