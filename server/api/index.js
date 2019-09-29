@@ -4,7 +4,7 @@ module.exports = router;
 router.use('/weather', require('./weather'));
 
 router.use((req, res, next) => {
-  const error = new Error('Not Found');
-  error.status = 404;
-  next(error);
+  const err = new Error('API route not found!');
+  err.status = 404;
+  next(err);
 });
