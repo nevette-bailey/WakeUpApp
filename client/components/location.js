@@ -41,7 +41,8 @@ class AppLocation extends Component {
     this.props.setLocationThunk(this.state.location);
     //get current conditions from location and set conditions & temperature on redux state
     await this.props.getConditionsThunk(this.state.location);
-    this.props.getShoesThunk(this.props.temperature);
+    //get clothes associated with current weather conditions
+    await this.props.getShoesThunk(this.props.temperature);
   };
 
   render() {
