@@ -5,9 +5,10 @@
     "npm": "6.x",
     "yarn": "1.x"
   },
-  "main": "node_modules/expo/AppEntry.js",
+  // "main": "node_modules/expo/AppEntry.js",
+    "main": "App.js",
   "scripts": {
-    "start": "expo start",
+    "start": "node App.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
