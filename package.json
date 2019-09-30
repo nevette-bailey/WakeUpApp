@@ -1,5 +1,10 @@
 {
   "name": "WakeUpApp",
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.x",
+    "yarn": "1.x"
+  },
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
