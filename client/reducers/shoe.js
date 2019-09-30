@@ -20,9 +20,9 @@ export const getShoesThunk = (temperature) => {
     try {
       const temp = Number(temperature);
       if (temp) {
-        console.log(' before Axios DATA HERE------------------');
+        console.log(' before Axios DATA HERE------------------', temp);
 
-        const { data } = await Axios.get(`/api/weather/${temp}`);
+        const { data } = await Axios.get(`/api/shoe`);
         console.log(data, 'DATA HERE----------------------------------');
         dispatch(getShoes(data));
       }

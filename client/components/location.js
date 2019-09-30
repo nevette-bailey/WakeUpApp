@@ -8,6 +8,8 @@ import { setLocationThunk } from '../reducers/location';
 import { getConditionsThunk } from '../reducers/currentConditions';
 import { getShoesThunk } from '../reducers/shoe';
 import Conditons from './conditions';
+import Shoes from './shoes.js';
+
 
 //was exported directly before, but I exported connect below...
 class AppLocation extends Component {
@@ -56,7 +58,8 @@ class AppLocation extends Component {
     return (
       <View style={styles.container}>
         {/* <Text style={styles.paragraph}>{text}</Text> */}
-        <Conditons />
+        <Conditons style={styles.paragraph}/>
+        <Shoes />
       </View>
       // null
     );

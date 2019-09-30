@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
+    // justifyContent: 'center',
     backgroundColor: '#fff'
   },
   title: {
-    margin: 24,
+    margin: 10,
     fontSize: 18,
-    textAlign: 'left'
+    textAlign: 'center',
+    fontFamily: 'HelveticaNeue-UltraLight'
   },
   paragraph: {
     margin: 24,

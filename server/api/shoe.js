@@ -2,6 +2,15 @@ const router = require('express').Router();
 const Shoe = require('../db/models/shoe');
 const Weather = require('../db/models/weather');
 
+router.get('/', async (req, res, next) => {
+  try {
+    const allShoe = await Shoe.findAll();
+    res.json(allShoe);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id);
@@ -20,3 +29,5 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
+
+module.exports = router;
