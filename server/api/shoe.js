@@ -7,6 +7,7 @@ router.get('/', async (req, res, next) => {
     const allShoe = await Shoe.findAll();
     res.json(allShoe);
   } catch (error) {
+    console.log(error, 'dfshdfdfsdkjfdjfshjdkhfsdsfhfjhd');
     next(error);
   }
 });

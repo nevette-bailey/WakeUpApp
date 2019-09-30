@@ -9,6 +9,8 @@ const pool = new Pool({
   ssl: true
 });
 
+const db = require('./db')
+
 //body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

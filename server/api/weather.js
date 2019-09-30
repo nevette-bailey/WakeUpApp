@@ -19,6 +19,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+
 // router.get('/:temp', async (req, res, next) => {
 //   try {
 //     const temp = Number(req.params.temp);
