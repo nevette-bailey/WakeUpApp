@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
+    "heroku": "^7.33.1",
     "mysql": "^2.17.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
@@ -37,6 +38,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.19.0",
+    "token": "^0.1.0",
     "uri-template-literal": "^1.0.1"
   },
   "devDependencies": {
