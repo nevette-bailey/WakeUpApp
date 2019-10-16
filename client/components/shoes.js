@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, Text, View, StyleSheet, Image } from 'react-native';
+import { Platform, Text, View, StyleSheet, Image, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import Constants from 'expo-constants';
 import { getShoesThunk } from '../reducers/shoe';
