@@ -14,10 +14,10 @@ console.log(chalk.yellow('Opening database connection'));
 const connectionString = process.env.DATABASE_URL;
 
 
-// // this doesn't work - try to figure it out!
-// const db = new Sequelize(`${connectionString}`, {
+// // this doesn't work - try to figure out how to connect without static credentials
+// const db = new Sequelize(process.env.DATABASE_URL, {
 //   logging: false,
-//   protocol: null,
+//   protocol: 'postgres',
 //   dialect: 'postgres',
 //   dialectOptions: {
 //     ssl: true
@@ -28,7 +28,6 @@ const connectionString = process.env.DATABASE_URL;
 const db = new Sequelize(`postgres://localhost:5432/${pkg.name}`, {
   logging: false // so we don't see all the SQL queries getting made
 });
-
 
 // // this works - connects to Heroku database!
 // const db = new Sequelize(
