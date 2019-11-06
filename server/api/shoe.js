@@ -7,7 +7,6 @@ router.get('/', async (req, res, next) => {
     const allShoe = await Shoe.findAll();
     res.json(allShoe);
   } catch (error) {
-    console.log(error, 'dfshdfdfsdkjfdjfshjdkhfsdsfhfjhd');
     next(error);
   }
 });
@@ -22,7 +21,7 @@ router.get('/:id', async (req, res, next) => {
       include: [{ model: Weather }]
     });
     if (shoe) {
-      res.json(student);
+      res.json(shoe);
     } else {
       res.sendStatus(404);
     }

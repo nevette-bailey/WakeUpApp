@@ -21,7 +21,7 @@ export const getShoesThunk = (temperature) => {
       const temp = Number(temperature);
       if (temp) {
         //use whichever location database is by specific address - phone doesn't have a localhost!
-        const { data } = await Axios.get('http://172.16.25.43:3000/api/shoe');
+        const { data } = await Axios.get('http://71.190.247.98/api/shoe');
         dispatch(getShoes(data));
       }
     } catch (error) {
