@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Shoe = require('../db/models/shoe');
 const Weather = require('../db/models/weather');
+const Sequelize = require('sequelize');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -11,17 +12,19 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:temp', async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-    const shoe = await Shoe.findOne({
-      where: {
-        id: id
-      },
-      include: [{ model: Weather }]
+    const temp = Number(req.params.id);
+    const shoes = await Shoe.findAll({
+      include: [
+        {
+          model: Weather,
+          where: { temperature: { [Sequelize.Op.contains]: temp } }
+        }
+      ]
     });
-    if (shoe) {
-      res.json(shoe);
+    if (shoes) {
+      res.json(shoes);
     } else {
       res.sendStatus(404);
     }
