@@ -98,7 +98,7 @@ const seed = async () => {
     );
     await Promise.all(
       shoesArr.map((shoe, index) => {
-        return Shoe.create({ id: index + 1, kind: shoe });
+        return Shoe.create({ id: index + 1, kind: shoe, shoeURI: shoeURIs[index] });
       })
     );
 

@@ -4,6 +4,9 @@ const db = require('../database');
 const Shoe = db.define('shoes', {
   kind: {
     type: Sequelize.STRING
+  },
+  shoeURI: {
+    type: Sequelize.STRING
   }
 });
 
