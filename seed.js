@@ -35,6 +35,18 @@ const shoesArr = [
   'insulated boots'
 ];
 
+//shoe URIs for images
+const shoesURIs = [
+  'https://image.flaticon.com/icons/svg/2113/2113993.svg',
+  'https://image.flaticon.com/icons/svg/1398/1398488.svg',
+  'https://image.flaticon.com/icons/svg/1901/1901148.svg',
+  'https://image.flaticon.com/icons/svg/2114/2114044.svg',
+  'https://image.flaticon.com/icons/svg/2033/2033853.svg',
+  'https://image.flaticon.com/icons/svg/2114/2114047.svg',
+  'https://image.flaticon.com/icons/svg/1254/1254479.svg',
+  'https://image.flaticon.com/icons/svg/1402/1402613.svg'
+];
+
 //for populating the join table for weather and shoes
 const weather_shoe = [
   { weatherId: 1, shoId: 8 },
@@ -85,7 +97,11 @@ const seed = async () => {
     );
     await Promise.all(
       shoesArr.map((shoe, index) => {
-        return Shoe.create({ id: index + 1, kind: shoe });
+        return Shoe.create({
+          id: index + 1,
+          kind: shoe,
+          shoeURI: shoesURIs[index]
+        });
       })
     );
 
